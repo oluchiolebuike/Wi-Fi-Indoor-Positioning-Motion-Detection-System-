@@ -1,0 +1,4 @@
+mean,var,fft_energy,label
+12.3,2.1,0.8,walking
+5.2,0.4,0.1,stationary
+20.1,5.2,2.3,running
