@@ -50,22 +50,67 @@ MOTION MODEL:
 
 ## Installation
 
+
+### Install dependencies:
+
 pip install numpy pandas scikit-learn paho-mqtt fastapi uvicorn joblib
 
-MQTT Broker:
-Install Mosquitto
+### Install MQTT broker (Mosquitto):
+
+### Ubuntu:
+sudo apt install mosquitto mosquitto-clients
+
+### Windows:
+Download Mosquitto from official site
 
 
-## Running the project 
+## How to run the system
 
-### Start MQTT subscriber:
+
+### STEP 1: Start MQTT Broker
+
+mosquitto
+
+or on Raspberry Pi:
+sudo systemctl start mosquitto
+
+
+### STEP 2: Start MQTT Subscriber
+
 python mqtt/subscriber.py
 
-### Run main system:
+
+### STEP 3: Start Main ML Engine
+
 python main.py
 
-### Start API server:
+
+### STEP 4: Start API Server
+
 uvicorn backend.api:app --reload
+
+API will be available at:
+http://127.0.0.1:8000
+
+
+### DATA FORMAT
+
+#### RSSI INPUT EXAMPLE:
+
+ap1, ap2, ap3
+-45, -60, -70
+
+#### Output:
+(x, y) position coordinates
+
+
+### MOTION INPUT FEATURES:
+
+mean, variance, fft_energy
+
+#### Output:
+stationary / walking / running
+
 
 
 ## Future Improvements
